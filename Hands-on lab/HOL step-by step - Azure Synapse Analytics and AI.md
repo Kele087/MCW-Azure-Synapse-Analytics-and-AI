@@ -1377,7 +1377,7 @@ In this exercise you will create a Synapse Pipeline that will orchestrate updati
 
     ![The pipeline designer is shown with an indicator of a drag and drop operation of the data flow activity.](media/ex5-task4-018.png "The Data flow activity")
 
-14. On the **Adding data flow** form, select **Create new data flow** and select **Data flow**.
+14. On the **Settings** tab, Click **New**.
 
     ![The Adding data flow form is displayed populated with the preceding values.](media/ex5-task4-019.png)
 
@@ -1484,7 +1484,6 @@ In this exercise you will create a Synapse Pipeline that will orchestrate updati
 
 38. Select the data flow activity on the pipeline designer surface, then in the bottom pane, select the **Settings** tab.
 
-    ![The data flow activity Settings tab is displayed.](media/ex5-task4-040.png "The Settings tab")
 
 39. Under the **PolyBase** settings, set the **Staging linked service** to the **asastore{suffix}** linked service. Enter **invoices-staging** as the **Storage staging folder**.
 
@@ -1894,7 +1893,7 @@ In this exercise, you will create multiple machine learning models. You will lea
 
     ![The AML Studio Experiments screen is shown with the Create button expanded and the Automated ML run item selected.](media/aml_experiment_create.png "The AML Studio Experiments screen")
 
-2. In the previous task, we registered our PCA dataframe (named **pcadata**) to use with Auto ML. Select **pcadata** from the list and select **Next**.
+2. Select **AggregatedProductSeasonality** from the list and select **Next**.
 
     ![On the Select dataset screen, the pcadata item is selected from the dataset list.](media/aml_automl_datasetselection.png "The select dataset form is displayed")
 
@@ -2005,7 +2004,7 @@ Setting importance in Synapse SQL for Azure Synapse allows you to influence the 
     SELECT s.login_name, r.[Status], r.Importance, submit_time, start_time ,s.session_id FROM sys.dm_pdw_exec_sessions s
     JOIN sys.dm_pdw_exec_requests r ON s.session_id = r.session_id
     WHERE s.login_name IN ('asa.sql.workload01','asa.sql.workload02') and Importance
-    is not NULL AND r.[status] in ('Running','Suspended') and submit_time>dateadd(minute,-4,getdate())
+    is not NULL AND r.[status] in ('Running','Suspended') 
     ORDER BY submit_time ,status
     ```
 
@@ -2041,7 +2040,7 @@ Setting importance in Synapse SQL for Azure Synapse allows you to influence the 
     SELECT s.login_name, r.[Status], r.Importance, submit_time, start_time ,s.session_id FROM sys.dm_pdw_exec_sessions s
     JOIN sys.dm_pdw_exec_requests r ON s.session_id = r.session_id
     WHERE s.login_name IN ('asa.sql.workload01','asa.sql.workload02') and Importance
-    is not NULL AND r.[status] in ('Running','Suspended') and submit_time>dateadd(minute,-2,getdate())
+    is not NULL AND r.[status] in ('Running','Suspended') --and submit_time>dateadd(minute,-2,getdate())
     ORDER BY submit_time ,status desc
     ```
 
